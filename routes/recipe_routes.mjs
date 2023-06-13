@@ -8,6 +8,7 @@ const router = express.Router();
 router.get('/search', searchRecipes);
 router.get('/filter', filterSearch);
 router.get('/:id/information', getRecipeDetail);
+// router.post('/favorites', addtoFavorites)
 
 
 export default router;

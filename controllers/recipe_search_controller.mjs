@@ -4,15 +4,12 @@ import Recipe from '../models/recipe_model.mjs';
 
 export const searchRecipes = async (req, res) => {
   try {
-    const { query, title, cuisines, diets, page = 1, limit = 20, aggregateLikes, id } = req.query;
-    
-   
-
+    const { query, title, cuisines, diets, page = 1, limit = 20, aggregateLikes, id} = req.query;
 
     await Recipe.deleteMany({});
 
     const offset = (page - 1) * limit;
-
+    
     const response = await axios.get(
       'https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/complexSearch',
       {
@@ -22,12 +19,8 @@ export const searchRecipes = async (req, res) => {
         },
         params: {
           query,
-          title,
-          id,
-          cuisines,
-          diets,
           addRecipeInformation: true,
-          sort: 'popularity',
+          sort: req.query.sort || 'popularity', // sort by popularity if no sort query param is provided
           number: limit,
           offset: offset,
         },
@@ -48,7 +41,7 @@ export const searchRecipes = async (req, res) => {
     // Sort recipes by aggregateLikes
     recipes.sort((a, b) => b.aggregateLikes - a.aggregateLikes);
 
-    res.json({ results: recipes });
+    res.json({results: recipes});
   } catch (error) {
     console.error(error);
     res.status(500).json({ error: 'Internal Server Error' });

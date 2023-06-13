@@ -23,6 +23,8 @@ app.use(cors());
 // Register routes
 app.use("/recipes", recipeRoutes);
 
+// app.use("/favorites", favoritesRoutes)
+
 // Start the server
 const port = process.env.PORT || 3000;
 app.listen(port, () => {
