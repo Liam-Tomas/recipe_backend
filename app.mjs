@@ -20,6 +20,9 @@ mongoose.connect(db, {
 
 app.use(cors());
 
+app.use(express.json());
+
+
 // Register routes
 app.use("/recipes", recipeRoutes);
 
