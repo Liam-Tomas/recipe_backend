@@ -4,6 +4,8 @@ import cors from 'cors'
 import mongoose from 'mongoose';
 import recipeRoutes from "./routes/recipe_routes.mjs";
 
+
+
 dotenv.config();
 
 const app = express();
@@ -25,6 +27,7 @@ app.use(express.json());
 
 // Register routes
 app.use("/recipes", recipeRoutes);
+
 
 // app.use("/favorites", favoritesRoutes)
 

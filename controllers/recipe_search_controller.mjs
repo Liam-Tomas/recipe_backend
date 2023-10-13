@@ -4,9 +4,7 @@ import Recipe from '../models/recipe_model.mjs';
 
 export const searchRecipes = async (req, res) => {
   try {
-    const { query, page = 1, limit = 20, diet, type} = req.query;
-
-    await Recipe.deleteMany({});
+    const { query, page = 1, limit = 12, diet, type} = req.query;
 
     const offset = (page - 1) * limit;
     
@@ -32,13 +30,19 @@ export const searchRecipes = async (req, res) => {
     const recipes = [];
 
     for (const recipeData of response.data.results) {
-      // Create a new Recipe model instance with the data
-      const recipe = new Recipe(recipeData);
-      // Save it to the database
-      await recipe.save();
-      console.log('data saved');
+      // Check if the recipe already exists in the database using its ID
+      let recipe = await Recipe.findOne({ id: recipeData.id });
+  
+      if (!recipe) {
+          // If the recipe doesn't exist, create a new instance and save it
+          recipe = new Recipe(recipeData);
+          await recipe.save();
+          console.log('data saved');
+      }
+      // Push the recipe (whether existing or new) to the recipes array
       recipes.push(recipe);
-    }
+  }
+  
 
     // Sort recipes by aggregateLikes
     // recipes.sort((a, b) => b.aggregateLikes - a.aggregateLikes);

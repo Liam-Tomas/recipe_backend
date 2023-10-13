@@ -1,11 +1,11 @@
-import Recipe from '../models/recipe_model.mjs';
+import UserRecipe from '../models/user_recipe_model.mjs';
 
 export const createRecipe = async (req, res) => {
   try {
 
     const recipeData = req.body;
     // Create a new Recipe model instance with the received data
-    const recipe = new Recipe(recipeData);
+    const recipe = new UserRecipe(recipeData);
     console.log(recipe)
     // Save the recipe to the database
     await recipe.save();

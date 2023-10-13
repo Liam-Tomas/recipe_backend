@@ -1,17 +1,45 @@
-import mongoose from 'mongoose'
+import mongoose from 'mongoose';
 
-const favoriteSchema = new mongoose.Schema({
-  recipeId: {
-    type: String,
-    required: true,
-    unique: true,
-  },
-  userId: {
-    type: String,
-    required: true,
-  },
+const { Schema } = mongoose;
+
+const FavoriteSchema = new Schema({
+    userUID: { 
+        type: String, 
+        required: true
+    },
+    recipeId: {
+        type: Number,
+        required: true
+    },
+    title: {
+        type: String,
+        required: false
+    },
+    image: {
+        type: String,
+        required: false
+    },
+    servings: {
+      type: String,
+      required: false
+    },
+    sourceUrl: {
+        type: String,
+        required: false
+
+    },
+    readyInMinutes: {
+        type: Number,
+        require: false
+    },
+    // Include other fields as needed
+    createdAt: {
+        type: Date,
+        default: Date.now,
+    }
 });
 
-const Favorite = mongoose.model('Favorite', favoriteSchema);
 
-export default favoriteSchema
+const Favorite = mongoose.model('Favorite', FavoriteSchema);
+
+export default Favorite;
