@@ -28,6 +28,10 @@ const FavoriteSchema = new Schema({
         required: false
 
     },
+    sourceName: {
+        type: String,
+        required: false
+    },
     readyInMinutes: {
         type: Number,
         require: false

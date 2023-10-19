@@ -2,7 +2,7 @@ import Favorite from '../models/favorites_model.mjs';
 
 export const addFavorite = async (req, res) => {
   const userUID = req.headers['x-user-uid']; // Get UID from headers
-  const { recipeId, title, image, servings, sourceUrl, readyInMinutes } = req.body; // Include title and image in the request body
+  const { recipeId, title, image, servings, sourceUrl, sourceName, readyInMinutes } = req.body; // Include title and image in the request body
 
 
   if (!userUID || !recipeId) {
@@ -17,6 +17,7 @@ export const addFavorite = async (req, res) => {
       image,
       servings,
       sourceUrl,
+      sourceName,
       readyInMinutes
     });
 

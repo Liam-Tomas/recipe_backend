@@ -10,7 +10,7 @@ const UserRecipeSchema = new Schema({
     title: String,
     id: Number,
     image: String,
-    // vegetarian: Boolean,
+    vegetarian: Boolean,
     // vegan: Boolean,
     // glutenFree: Boolean,
     // dairyFree: Boolean,
