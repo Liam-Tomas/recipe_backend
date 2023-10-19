@@ -32,7 +32,6 @@ const FavoriteSchema = new Schema({
         type: Number,
         require: false
     },
-    // Include other fields as needed
     createdAt: {
         type: Date,
         default: Date.now,

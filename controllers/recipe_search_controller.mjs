@@ -21,7 +21,7 @@ export const searchRecipes = async (req, res) => {
           sort: req.query.sort || 'popularity', // sort by popularity if no sort query param is provided
           number: limit,
           offset: offset,
-          diet: diet || '', // Use the diet parameter from the request or default to 'vegetarian'
+          diet: diet || '',
           type: type || '',
         },
       }
