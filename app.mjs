@@ -1,9 +1,8 @@
 import express from "express";
 import dotenv from "dotenv";
-import cors from 'cors'
+import cors from 'cors';
 import mongoose from 'mongoose';
 import recipeRoutes from "./routes/recipe_routes.mjs";
-
 
 dotenv.config();
 
@@ -23,7 +22,8 @@ app.use(cors());
 
 app.use(express.json());
 
-// Register routes
+
+// Apply the limiter before registering your "/recipes" routes
 app.use("/recipes", recipeRoutes);
 
 // Start the server
