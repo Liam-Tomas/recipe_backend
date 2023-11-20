@@ -43,10 +43,6 @@ export const searchRecipes = async (req, res) => {
       recipes.push(recipe);
   }
   
-
-    // Sort recipes by aggregateLikes
-    // recipes.sort((a, b) => b.aggregateLikes - a.aggregateLikes);
-
     res.json({results: recipes});
   } catch (error) {
     console.error(error);
