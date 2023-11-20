@@ -43,16 +43,41 @@ The backend for the Recipe Manager Web Application is a Node.js server using Exp
 - `GET /recipes/filters`: Returns a list of available filters, such as dietary restrictions or meal types, that can be applied to recipe searches.
 - `GET /recipes/sort`: Provides sorting options for recipe searches, such as sorting by popularity, preparation time, or healthiness.
 
-
-## Environment Variables
-Description of required environment variables (e.g., MONGODB_CONNECT_STRING, PORT, etc.).
-
 ## Repository Structure
-Provide an overview of the repository structure, highlighting the key directories and files.
+
+The backend repository is structured for clarity and ease of navigation. Below is an overview of the primary directories and their respective files:
+
+### Root Directory
+- **app.mjs:** The main application file where the Express.js server is configured and started.
+- **.env:** Environment variables file (not to be committed to version control for security reasons).
+
+### Controllers
+Contains the logic for handling requests and sending responses.
+- **details_controller.mjs:** Handles requests for detailed recipe information.
+- **favorites_controller.mjs:** Manages favorite recipe operations.
+- **filter_controller.mjs:** Provides functionality for filtering recipes.
+- **my_recipes_controller.mjs:** Controls operations related to user-created recipes.
+- **recipe_search_controller.mjs:** Handles the recipe search functionality.
+
+### Models
+Defines the data schema and models for the application.
+- **recipe_model.mjs:** Mongoose schema for the recipe data.
+- **favorites_model.mjs:** Schema for managing user's favorite recipes.
+- **user_recipe_model.mjs:** Schema for user-submitted recipes.
+
+### Routes
+Manages the application routes.
+- **recipe_routes.mjs:** Routes for recipe-related requests.
+
+### .idea
+This directory is created by some IDEs (like JetBrains products) for project settings. It typically contains configuration files specific to the development environment and should not be committed to version control.
+
+### node_modules
+Contains all the npm dependencies and packages. This directory is generated when `npm install` is run and should not be committed to version control.
 
 ## Technologies Used
-- Node.js and Express.js for server-side logic.
-- MongoDB with Mongoose for database management.
-- Axios for external API requests.
-- CORS for handling cross-origin requests.
-
+- Express.js for creating the server and managing routes.
+- Mongoose for object data modeling (ODM) and interaction with MongoDB.
+- Dotenv for managing environment variables.
+- CORS middleware for enabling cross-origin requests.
+- Axios for making external API requests
